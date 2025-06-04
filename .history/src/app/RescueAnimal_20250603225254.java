@@ -1,0 +1,124 @@
+package app;
+import java.lang.String;
+
+public class RescueAnimal {
+
+	// Instance variables
+	private String name;
+	private String animalType;
+	private String gender;
+	private String age;
+	private String weight;
+	private String acquisitionDate;
+	private String acquisitionCountry;
+	private TrainingStatus trainingStatus;
+	private boolean reserved;
+	private String inServiceCountry;
+
+
+	// Constructor
+	public RescueAnimal() {
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getAnimalType() {
+		return animalType;
+	}
+
+
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
+	}
+
+
+	public String getGender() {
+		return gender;
+	}
+
+	// Restricts gender to M or F
+	public void setGender(String gender) {
+		if (!gender.equalsIgnoreCase("M") && !gender.equalsIgnoreCase("F")) {
+			throw new IllegalArgumentException("Gender must be 'M' or 'F'");
+		}
+		this.gender = gender.toUpperCase();
+	}
+
+
+	public String getAge() {
+		return age;
+	}
+
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+
+	public String getWeight() {
+		return weight;
+	}
+
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+
+	public String getAcquisitionDate() {
+		return acquisitionDate;
+	}
+
+
+	public void setAcquisitionDate(String acquisitionDate) {
+		this.acquisitionDate = acquisitionDate;
+	}
+
+
+	public String getAcquisitionLocation() {
+		return acquisitionCountry;
+	}
+
+
+	public void setAcquisitionLocation(String acquisitionCountry) {
+		this.acquisitionCountry = acquisitionCountry;
+	}
+
+
+	public boolean getReserved() {
+		return reserved;
+	}
+
+
+	public void setReserved(boolean reserved) {
+		this.reserved = reserved;
+	}
+
+
+	public String getInServiceCountry() {
+		return inServiceCountry;
+	}
+
+
+	public void setInServiceCountry(String inServiceCountry) {
+		this.inServiceCountry = inServiceCountry;
+	}
+
+	public TrainingStatus getTrainingStatus() {
+		return trainingStatus;
+	}
+
+
+	public void setTrainingStatus(TrainingStatus trainingStatus) {
+		this.trainingStatus = trainingStatus;
+	}
+}
