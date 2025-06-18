@@ -105,8 +105,8 @@ public class Driver {
 	}
 
 	private static void intakeNewDog(Scanner scanner) {
-		System.out.println("What is the dog's name?");
-		String name = scanner.nextLine();
+		// Checks the animal's name
+		String name = RescueAnimalHelper.promptValidName(scanner, AnimalType.DOG);
 
 		// Returns the user to the main menu if the dog name is found in the system
 		for (Dog dog: dogList) {
@@ -119,6 +119,7 @@ public class Driver {
 		System.out.println("What is the dog's breed?");
 		String breed = scanner.nextLine().trim();
 
+		// Validates gender
 		Gender gender = RescueAnimalHelper.promptForGender(scanner, "dog"); // Restricts input to enum
 
 		System.out.println("What is the dog's age?");
@@ -148,8 +149,8 @@ public class Driver {
 	}
 
 	private static void intakeNewMonkey(Scanner scanner) {
-		System.out.println("What is the monkey's name?");
-		String name = scanner.nextLine();
+		// Checks the animal's name
+		String name = RescueAnimalHelper.promptValidName(scanner, AnimalType.MONKEY);
 
 		// Returns the user to the main menu if the monkey name is found in the system
 		for (Monkey monkey: monkeyList) {
@@ -159,8 +160,10 @@ public class Driver {
 			}
 		}
 
+		// Validates species
 		String species = RescueAnimalHelper.promptForSpecies(scanner);										// Restricts input to enum
 
+		// Validates gender
     Gender gender = RescueAnimalHelper.promptForGender(scanner, "monkey"); // Restricts input to enum
 
     System.out.println("What is the monkey's age?");
@@ -240,7 +243,8 @@ public class Driver {
 	}
 
 	// Checks if animal is both not reserved and in the requested country
-	// Only reserves the first matching animal
+	// Only reserves the first matching animal and updates the reserved status
+	// NOTE: According to the docs, there is no restriction on training status when reserving an animal
 	private static <T extends RescueAnimal> boolean reserveAvailableAnimal(AnimalType type, String country, List<T> animalList) {
     for (RescueAnimal animal : animalList) {
 			if (!animal.getReserved() && animal.getInServiceCountry().equalsIgnoreCase(country)) {
@@ -312,7 +316,7 @@ public class Driver {
 		// Instantiates list of available animals to print later
     List<RescueAnimal> availableAnimals = new ArrayList<>();
     for (RescueAnimal animal : animalsToCheck) {
-			// Only adds the animal if it is IN_SERVICE and not reserved
+			// Only adds the animal if it is in service and not reserved
       if (!animal.getReserved() && animal.getTrainingStatus() == TrainingStatus.IN_SERVICE) {
         availableAnimals.add(animal);
       }

@@ -3,6 +3,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+
+import utils.Utils.AnimalType;
 import utils.Utils.Gender;
 import utils.Utils.TrainingStatus;
 
@@ -50,6 +52,7 @@ public class RescueAnimalHelper {
 		return genderEnum;
 	}
 
+	// Loops until the user enters a valid value for species from set (case insensitive)
 	public static String promptForSpecies(Scanner scanner) {
     String species = null;
     while (species == null) {
@@ -61,7 +64,29 @@ public class RescueAnimalHelper {
 			} else {
 				System.out.println("Invalid species. Please enter one of the valid species.");
 			}
+		}
 
-    return species;
+		return species;
+	}
+
+	// Loops until the user enters a valid value for name
+	public static String promptValidName(Scanner scanner, AnimalType animalType) {
+		String name;
+
+		while (true) {
+			System.out.println("What is the " + animalType.name().toLowerCase() + "'s name?");
+			name = scanner.nextLine();
+
+			if (isValidName(name)) {
+				return name;
+			} else {
+				System.out.println("Invalid name. Please use letters only, no numbers or special characters.");
+			}
+		}
+	}
+
+	// Validates animal name to ensure that no numbers or special chars are submitted
+	public static boolean isValidName(String name) {
+    return name != null && name.trim().matches("^[a-zA-Z]+$");
 	}
 }
